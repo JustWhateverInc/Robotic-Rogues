@@ -7,7 +7,11 @@
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprite>sprites\spr_tile</sprite>
-    <sprite>sprites\spr_player_robot</sprite>
+    <sprite>sprites\spr_player_robot_idle</sprite>
+    <sprite>sprites\spr_player_robot_move</sprite>
+    <sprite>sprites\spr_player_robot_rotate_clockwise</sprite>
+    <sprite>sprites\spr_player_robot_rotate_counter</sprite>
+    <sprite>sprites\spr_player_robot_u_turn</sprite>
   </sprites>
   <backgrounds name="background"/>
   <paths name="paths"/>

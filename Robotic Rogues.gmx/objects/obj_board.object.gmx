@@ -36,7 +36,31 @@ var i = -(board_height/2);
 while(i &lt;= (board_height/2)){
     var j = -(board_width/2);
     while(j &lt;= (board_width/2)){
+        //Create Tiles
         instance_create(x + (j * tile_size), y + (i * tile_size), obj_tile);
+        
+        //Create Robots
+        if((i == -(board_height/2)) &amp;&amp; (j == -(board_width/2))){
+            var robot = instance_create(x + (j * tile_size), y + (i * tile_size), obj_player_robot);
+            robot.color = c_navy;
+            robot.device = 0;
+            
+        } else if((i == (board_height/2)) &amp;&amp; (j == -(board_width/2))){
+            var robot = instance_create(x + (j * tile_size), y + (i * tile_size), obj_player_robot);
+            robot.color = c_maroon;
+            robot.device = 1;
+            
+        } else if((i == -(board_height/2)) &amp;&amp; (j == (board_width/2))){
+            var robot = instance_create(x + (j * tile_size), y + (i * tile_size), obj_player_robot);
+            robot.color = c_green;
+            robot.device = 2;
+            
+        } else if((i == (board_height/2)) &amp;&amp; (j == (board_width/2))){
+            var robot = instance_create(x + (j * tile_size), y + (i * tile_size), obj_player_robot);
+            robot.color = c_orange;
+            robot.device = 3;
+        }
+        
         j++;
     }
     i++;
