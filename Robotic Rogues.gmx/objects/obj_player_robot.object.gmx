@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>///Vars
 //Constants
-action_timer_set = 30;
+action_timer_set = 20;
 action_timer = action_timer_set;
 
 animation_timer_set = 20;
@@ -77,14 +77,21 @@ if(action_timer &lt;= 0){
     var left = false;
     var right = false;
     
-    if(left_axis_h &gt; threshold){
-        right = true;
-    } else if(left_axis_h &lt; -threshold){
-        left = true;
-    } else if(left_axis_v &gt; threshold){
-        down = true;
-    } else if(left_axis_v &lt; -threshold){
-        up = true;
+    //Set Dir and Facing
+    var dir = point_direction(0, 0, left_axis_h, left_axis_v);
+    if(point_distance(0, 0, left_axis_h, left_axis_v) &gt; threshold){
+        var check = round(dir/90) * 90;
+        
+        //Set Look Dir
+        if((check == 360) || (check == 0)){
+            right = true;
+        } else if(check == 90){
+            up = true;
+        } else if((check == 180)){
+            left = true;
+        } else if(check == 270){
+            down = true;
+        }
     }
     
     //Get Action Based on Facing
@@ -151,6 +158,19 @@ if(action_timer &lt;= 0){
             
             //Set Animation
             sprite_index = spr_player_robot_move;
+            image_index = 0;
+            
+            //Start Animation Timer
+            animation_timer = animation_timer_set;
+            break;
+            
+        case "back":
+            //Move
+            x += lengthdir_x(-64, facing);
+            y += lengthdir_y(-64, facing);
+            
+            //Set Animation
+            sprite_index = spr_player_robot_back;
             image_index = 0;
             
             //Start Animation Timer
